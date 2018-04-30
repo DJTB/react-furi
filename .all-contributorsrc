@@ -1,0 +1,25 @@
+{
+  "projectName": "hatsuon",
+  "projectOwner": "DJTB",
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DJTB",
+      "name": "Duncan Bay",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/22868432?v=3",
+      "profile": "https://github.com/DJTB",
+      "contributions": [
+        "code",
+        "doc",
+        "infra",
+        "design",
+        "example"
+      ]
+    }
+  ],
+  "repoType": "github"
+}
