@@ -8,6 +8,11 @@ import cuid from 'cuid';
 
 import { combineFuri } from './utils';
 
+const Wrapper = styled.div`
+  display: flex;
+  font-size: 2rem;
+`;
+
 const Pair = styled.div`
   display: flex;
   line-height: 1;
@@ -19,8 +24,8 @@ const Pair = styled.div`
 
 const Furi = styled.span`
   display: block;
-  font-size: 0.9em;
-  letter-spacing: -0.025em;
+  font-size: 0.5em;
+  letter-spacing: -0.02em;
   padding-bottom: 0.2em;
   user-select: none; /* don't interfere with main text selection */
   opacity: 0.9;
@@ -30,19 +35,19 @@ const Kanji = styled.span`
   display: block;
 `;
 
-function ReactFuri({ word, reading, furi, showFuri, render }) {
+function ReactFuri({ word, reading, furi, showFuri, render, ...props }) {
   const pairs = combineFuri(word, reading, furi);
   return render ? (
     render({ pairs })
   ) : (
-    <React.Fragment>
+    <Wrapper {...props}>
       {pairs.map(([kana, kanji]) => (
         <Pair key={cuid()} lang="ja">
           {showFuri && <Furi>{kana}</Furi>}
           <Kanji>{kanji}</Kanji>
         </Pair>
       ))}
-    </React.Fragment>
+    </Wrapper>
   );
 }
 

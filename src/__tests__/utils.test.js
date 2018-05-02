@@ -2,8 +2,11 @@ import { combineFuri, basicFuri, parseFuri, generatePairs } from '../utils';
 
 describe('combineFuri()', () => {
   describe('defaults', () => {
-    it('no args', () => {
-      expect(combineFuri()).toEqual([]);
+    it('missing necessary params', () => {
+      expect(combineFuri()).toEqual([['', '']]);
+      expect(combineFuri('', '')).toEqual([['', '']]);
+      expect(combineFuri('', '', '')).toEqual([['', '']]);
+      expect(combineFuri('', '', '0:ああ')).toEqual([['', '']]);
     });
     describe('no reading or furi', () => {
       it('kanji word', () => {
@@ -43,28 +46,44 @@ describe('combineFuri()', () => {
     it('handles special readings for better display', () => {
       // instead of putting the entire reading under the first kanji like the furi string suggests,
       // we use the "reading only" display so it's centered over the whole kanji group
-      // this only applies to 義訓/熟字訓 words with an "0:かな" furi string
+      // this only applies to 義訓/熟字訓 words with a single initial "0:かな" furi string
       expect(combineFuri('今日', 'きょう', '0:きょう')).toEqual([['きょう', '今日']]);
     });
   });
   describe('without furi data', () => {
-    it('kana fallback', () => {
-      expect(combineFuri('すいか', 'スイカ')).toEqual([['スイカ', 'すいか']]);
+    it('avoid redundant kana fallbacks', () => {
+      expect(combineFuri('すいか', 'すいか')).toEqual([['', 'すいか']]);
+      expect(combineFuri('すいか', 'スイカ')).toEqual([['', 'すいか']]);
+      expect(combineFuri('スイカ', 'スイカ')).toEqual([['', 'スイカ']]);
+      expect(combineFuri('スイカ', 'すいか')).toEqual([['', 'スイカ']]);
     });
     it('trailing okurigana fallback', () => {
       expect(combineFuri('大人しい', 'おとなしい')).toEqual([['おとな', '大人'], ['', 'しい']]);
     });
-    it('trailing okurigana with repeated inner kana token (し) fallback', () => {
-      expect(combineFuri('申し申し', 'もしもし')).toEqual([['もしも', '申し申'], ['', 'し']]);
+    it('leading bikago fallback', () => {
+      expect(combineFuri('お札', 'おふだ')).toEqual([['', 'お'], ['ふだ', '札']]);
     });
-    it('inner okurigana fallback', () => {
-      expect(combineFuri('使い方', 'つかいかた')).toEqual([['つかいかた', '使い方']]);
+    it('leading bikago and trailing okurigana fallback', () => {
+      expect(combineFuri('お見舞い', 'おみまい')).toEqual([
+        ['', 'お'],
+        ['みま', '見舞'],
+        ['', 'い'],
+      ]);
     });
-    it('initial okurigana fallback', () => {
-      expect(combineFuri('お世辞', 'おせじ')).toEqual([['おせじ', 'お世辞']]);
-    });
-    it("passes through mixed kanji katakana words since they're weirdo", () => {
-      expect(combineFuri('缶ビール', 'かんびーる')).toEqual([['かんびーる', '缶ビール']]);
+    // not perfect since 'ー' is caught as a kanji, a few extra html elements, but it'll look fine visually
+    it('reasonably handles whacky wanikani nonsense dual kana readings', () => {
+      expect(combineFuri('缶ビール', 'かんビール')).toEqual([
+        ['かん', '缶'],
+        ['', 'ビ'],
+        ['', 'ー'],
+        ['', 'ル'],
+      ]);
+      expect(combineFuri('ハート型', 'ハートがた')).toEqual([
+        ['', 'ハ'],
+        ['', 'ー'],
+        ['', 'ト'],
+        ['がた', '型'],
+      ]);
     });
   });
 });
@@ -79,12 +98,25 @@ describe('basicFuri()', () => {
     });
   });
 
-  it('splits by okurigana if present', () => {
+  it('slices kana where present', () => {
+    expect(basicFuri('お札', 'おふだ')).toEqual([['', 'お'], ['ふだ', '札']]);
+    expect(basicFuri('使い方', 'つかいかた')).toEqual([['つか', '使'], ['', 'い'], ['かた', '方']]);
     expect(basicFuri('大人しい', 'おとなしい')).toEqual([['おとな', '大人'], ['', 'しい']]);
-  });
-
-  it('renders whole reading if no okurigana', () => {
-    expect(basicFuri('使い方', 'つかいかた')).toEqual([['つかいかた', '使い方']]);
+    expect(basicFuri('申し申し', 'もしもし')).toEqual([
+      ['も', '申'],
+      ['', 'し'],
+      ['も', '申'],
+      ['', 'し'],
+    ]);
+    expect(basicFuri('お見舞い', 'おみまい')).toEqual([['', 'お'], ['みま', '見舞'], ['', 'い']]);
+    // not a real word :P
+    expect(basicFuri('お見い舞い', 'おみいまい')).toEqual([
+      ['', 'お'],
+      ['み', '見'],
+      ['', 'い'],
+      ['ま', '舞'],
+      ['', 'い'],
+    ]);
   });
 });
 

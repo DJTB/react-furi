@@ -1,4 +1,5 @@
-import { stripOkurigana, isKanji, isKatakana } from 'wanakana';
+import { stripOkurigana, tokenize, isKanji, isHiragana, isKatakana } from 'wanakana';
+import zip from 'just-zip-it';
 
 /**
  * Combines furigana with kanji into an array of string pairs.
@@ -9,54 +10,68 @@ import { stripOkurigana, isKanji, isKatakana } from 'wanakana';
  * @example
  * combineFuri('お世辞', 'おせじ', '1:せ;2:じ')
  * // => [['', 'お'], ['せ', '世'], ['じ', '辞']]
- * combineFuri('大人しい', 'おとなしい') // fallback via basicFuri()
+ * combineFuri('大人しい', 'おとなしい') // smart fallbacks
  * // => [['おとな', '大人'], ['', 'しい']]
- * combineFuri('使い方', 'つかいかた') // fallback via basicFuri()
- * // => [['つかいかた', '使い方']]
+ * combineFuri('使い方', 'つかいかた') // smart fallbacks
+ * // => [['つか', '使'], ['', 'い'], ['かた', '方']]
  *
- * // special reading fallback when chars are only kanji and furi is set to only 0:
+ * // special compound readings (義訓/熟字訓) are spread across relevant kanji
  * combineFuri('胡座', 'あぐら', '0:あぐら')
  * // => [['あぐら', '胡座']]
- * // otherwise it displays weirdly with different furi/char font sizes
- * // or centered text when provided as [['あぐら', '胡'], ['', '座']]
  */
 export function combineFuri(word = '', reading = '', furi = '') {
   const furiLocs = parseFuri(furi);
   // 義訓/熟字訓 words with a single furi loc: 今日 "0:きょう"
   const isSpecialReading = furiLocs.length === 1 && [...word].every(isKanji);
+  const isKanaWord = ![...word].some(isKanji);
+  const isWanikaniMadness = [...reading].some(isHiragana) && [...reading].some(isKatakana);
 
-  if (!furi || isSpecialReading) {
+  if (word === reading || isKanaWord) {
+    return [['', word]];
+  }
+
+  if (!furi || isSpecialReading || isWanikaniMadness) {
     return basicFuri(word, reading);
   }
+
   return generatePairs(word, furiLocs);
 }
 
 /**
- * Displays simple furigana by separating main kanji and trailing okurigana
- * @param  {String} [word=''] '大人しい'
- * @param  {String} [reading=''] 'おとなしい'
- * @return {Array} [['おとな', '大人'], ['', 'しい']]
+ * Displays simple furigana by separating kanji and kana
+ * @param  {String} [word=''] 'お見舞い'
+ * @param  {String} [reading=''] 'おみまい'
+ * @return {Array} [['', 'お'], ['見舞', 'みま'], ['', 'い']]
  */
 export function basicFuri(word = '', reading = '') {
-  // NOTE: with weird combos like 缶ビール and ハート型
-  // it's better to just render entire reading if no furi provided
-  const isKanjiKatakanaCombo = [...word].some(isKanji) && [...word].some(isKatakana);
+  // FIXME: refactor works, now simplify + cleanup code
+  const [bikago, okurigana] = [
+    reading.slice(0, word.length - stripOkurigana(word, { leading: true }).length),
+    reading.slice(stripOkurigana(reading, { matchKanji: word }).length),
+  ];
+  const removeExtraneousKana = (str) =>
+    str.replace(RegExp(`^${bikago}`), '').replace(RegExp(`${okurigana}$`), '');
+  const wordInner = removeExtraneousKana(word);
+  const readingInner = removeExtraneousKana(reading);
+  const kanjiSplit = tokenize(wordInner);
 
-  if (!word) {
-    return [];
-  }
-  if (word === reading) {
-    return [['', word]];
-  }
-  if (isKanjiKatakanaCombo) {
-    return [[reading, word]];
+  const re = RegExp(kanjiSplit.map((x) => (isKanji(x) ? '(.*)' : `(${x})`)).join(''));
+  const [, ...kanaSplit] = readingInner.match(re) || [];
+
+  // always kanji odd, kana even [kj], [kj, ka, kj] or [kj, ka, kj, ka, kj]
+  const removeRedundantReadings = ([a, b]) => (a === b || !a ? ['', b] : [a, b]);
+
+  const ret = zip(kanaSplit, kanjiSplit).map(removeRedundantReadings);
+
+  if (bikago) {
+    ret.unshift(['', bikago]);
   }
 
-  const strippedWord = stripOkurigana(word);
-  const strippedReading = stripOkurigana(reading, { matchKanji: word });
-  const okurigana = word.slice(strippedWord.length);
+  if (okurigana) {
+    ret.push(['', okurigana]);
+  }
 
-  return [[strippedReading, strippedWord]].concat(okurigana ? [['', okurigana]] : []);
+  return ret;
 }
 
 export function parseFuri(data) {
@@ -69,7 +84,10 @@ export function parseFuri(data) {
  * @return {Array} [ [[1, 2], 'せ'], [[2, 3], 'じ'] ]
  */
 function parseFuriObject(locations = {}) {
-  return Object.entries(locations).map(([start, content]) => [[+start, +start + 1], content]);
+  return Object.entries(locations).map(([start, content]) => [
+    [Number(start), Number(start) + 1],
+    content,
+  ]);
 }
 
 /**
