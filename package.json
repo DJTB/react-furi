@@ -22,9 +22,8 @@
     "dist"
   ],
   "peerDependencies": {
-    "prop-types": "15.6.1",
-    "react": "16.3.2",
-    "styled-components": "3.2.6"
+    "react": ">=0.14.0",
+    "react-dom": ">=0.14.0"
   },
   "dependencies": {
     "cuid": "2.1.1",
@@ -34,6 +33,7 @@
   "devDependencies": {
     "all-contributors-cli": "^4.5.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.0.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.0",
@@ -48,15 +48,15 @@
     "eslint-plugin-react": "7.7.0",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
-    "jest-styled-components": "5.0.1",
     "lint-staged": "^4.2.3",
     "nps": "^5.7.1",
     "nps-utils": "^1.4.0",
     "prettier": "^1.7.4",
-    "prop-types": "15.6.1",
-    "react": "16.3.2",
-    "styled-components": "3.2.6",
-    "remove-lockfiles": "^1.4.1"
+    "prop-types": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "remove-lockfiles": "^1.4.1",
+    "styled-components": "^3.2.6"
   },
   "config": {
     "commitizen": {
