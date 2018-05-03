@@ -38,30 +38,27 @@ export function combineFuri(word = '', reading = '', furi = '') {
 }
 
 /**
- * Displays simple furigana by separating kanji and kana
+ * Displays simple furigana by removing redundant kana
  * @param  {String} [word=''] 'お見舞い'
  * @param  {String} [reading=''] 'おみまい'
  * @return {Array} [['', 'お'], ['見舞', 'みま'], ['', 'い']]
  */
 export function basicFuri(word = '', reading = '') {
-  // FIXME: refactor works, now simplify + cleanup code
   const [bikago, okurigana] = [
     reading.slice(0, word.length - stripOkurigana(word, { leading: true }).length),
     reading.slice(stripOkurigana(reading, { matchKanji: word }).length),
   ];
-  const removeExtraneousKana = (str) =>
-    str.replace(RegExp(`^${bikago}`), '').replace(RegExp(`${okurigana}$`), '');
-  const wordInner = removeExtraneousKana(word);
-  const readingInner = removeExtraneousKana(reading);
-  const kanjiSplit = tokenize(wordInner);
 
-  const re = RegExp(kanjiSplit.map((x) => (isKanji(x) ? '(.*)' : `(${x})`)).join(''));
-  const [, ...kanaSplit] = readingInner.match(re) || [];
+  const innerWordTokens = tokenize(removeExtraneousKana(word, bikago, okurigana));
+  let innerReadingChars = removeExtraneousKana(reading, bikago, okurigana);
 
-  // always kanji odd, kana even [kj], [kj, ka, kj] or [kj, ka, kj, ka, kj]
-  const removeRedundantReadings = ([a, b]) => (a === b || !a ? ['', b] : [a, b]);
+  const kanjiOddKanaEvenRegex = RegExp(
+    innerWordTokens.map((char) => (isKanji(char) ? '(.*)' : `(${char})`)).join('')
+  );
 
-  const ret = zip(kanaSplit, kanjiSplit).map(removeRedundantReadings);
+  [, ...innerReadingChars] = innerReadingChars.match(kanjiOddKanaEvenRegex) || [];
+
+  const ret = zip(innerReadingChars, innerWordTokens).map(skipRedundantReadings);
 
   if (bikago) {
     ret.unshift(['', bikago]);
@@ -72,6 +69,14 @@ export function basicFuri(word = '', reading = '') {
   }
 
   return ret;
+}
+
+function removeExtraneousKana(str = '', leading = '', trailing = '') {
+  return str.replace(RegExp(`^${leading}`), '').replace(RegExp(`${trailing}$`), '');
+}
+
+function skipRedundantReadings([reading, word = '']) {
+  return !reading || reading === word ? ['', word] : [reading, word];
 }
 
 export function parseFuri(data) {
@@ -107,7 +112,7 @@ function parseFuriString(locations = '') {
 }
 
 /**
- * Generates array pairs consisting of furigana and kanji
+ * Generates array pairs via furigana location data
  * @param  {String} word 'お世辞'
  * @param  {Array} furiLocs [[[1, 2], 'せ'], [[2, 3], 'じ']]
  * @return {Array} [['', 'お'], ['せ', '世'], ['じ', '辞']]
