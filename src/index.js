@@ -1,6 +1,4 @@
 // TODO: semantic-release-cli setup
-// TODO: test render with ReactFuri.Pair etc works as expected
-// TODO: remove styled-components so consumers can style however they like
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -9,8 +7,8 @@ import cuid from 'cuid';
 import { combineFuri } from './utils';
 
 const Wrapper = styled.div`
-  display: flex;
-  font-size: 2rem;
+  display: inline-flex;
+  font-size: 24px;
 `;
 
 const Pair = styled.div`
@@ -31,20 +29,21 @@ const Furi = styled.span`
   opacity: 0.9;
 `;
 
-const Kanji = styled.span`
+const Text = styled.span`
   display: block;
 `;
 
 function ReactFuri({ word, reading, furi, showFuri, render, ...props }) {
   const pairs = combineFuri(word, reading, furi);
+
   return render ? (
     render({ pairs })
   ) : (
-    <Wrapper {...props}>
-      {pairs.map(([kana, kanji]) => (
-        <Pair key={cuid()} lang="ja">
-          {showFuri && <Furi>{kana}</Furi>}
-          <Kanji>{kanji}</Kanji>
+    <Wrapper lang="ja" {...props}>
+      {pairs.map(([furiText, text]) => (
+        <Pair key={cuid()}>
+          {showFuri && furiText && <Furi>{furiText}</Furi>}
+          <Text>{text}</Text>
         </Pair>
       ))}
     </Wrapper>
@@ -65,8 +64,9 @@ ReactFuri.defaultProps = {
   showFuri: true,
 };
 
+ReactFuri.Wrapper = Wrapper;
 ReactFuri.Pair = Pair;
 ReactFuri.Furi = Furi;
-ReactFuri.Kanji = Kanji;
+ReactFuri.Text = Text;
 
 export default ReactFuri;

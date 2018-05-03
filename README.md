@@ -11,32 +11,27 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Code of Conduct](https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square)](./code_of_conduct.md)
 
-## REPO is WIP
+## REPO is currently UNSTABLE
 
 Component extracted from a production site.
-Currently missing from repo:
+Currently missing:
 
-* bundling
-* render tests
 * NPM publish
-* example demo
-* plain css => removal of styled-components as dependency
+* Remove styled-components dependency
+
+## Demo
+
+[djtb.github.io/react-furi](https://djtb.github.io/react-furi)
 
 ## Why?
 
-The [Ruby](https://developer.mozilla.org/ja/docs/Web/HTML/Element/ruby) element often has less than ideal rendering. This React component allows you to use furigana data from [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) to render only the necessary readings over their respective characters. Also allows better styling control of your furigana, props to easily show/hide furigana, and fallbacks to render similarly to Ruby tags, but without unnecessary trailing [okurigana](https://en.wikipedia.org/wiki/Okurigana).
+The [Ruby](https://developer.mozilla.org/ja/docs/Web/HTML/Element/ruby) element often has less than ideal rendering. This React component allows you to use furigana data from [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) to render only the necessary readings over their respective characters. Also allows better styling control of your furigana, props to easily show/hide furigana, and fallbacks to render similarly to Ruby tags while automatically removing redundant kana.
 
-<!--
 ## Installation
 
 ```sh
 npm install --save react-furi
 ```
-
-## Demo
-
-[Examples](https://djtb.github.io/react-furi)
--->
 
 ## Usage
 

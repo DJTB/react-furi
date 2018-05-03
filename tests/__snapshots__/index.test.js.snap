@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReactFuri /> custom render prop 1`] = `
+<div>
+  <div>
+    <dl>
+      <dd>
+        かん
+      </dd>
+      <dt>
+        漢
+      </dt>
+    </dl>
+    <dl>
+      <dd>
+        じ
+      </dd>
+      <dt>
+        字
+      </dt>
+    </dl>
+  </div>
+</div>
+`;
+
+exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa qPQcf"
+    lang="ja"
+  >
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      <span
+        class="sc-htpNat dmCBwz"
+      >
+        かん
+      </span>
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        漢
+      </span>
+    </div>
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      <span
+        class="sc-htpNat dmCBwz"
+      >
+        じ
+      </span>
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        字
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ReactFuri /> no furi provided: render relevant readings over kanji blocks 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa qPQcf"
+    lang="ja"
+  >
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        お
+      </span>
+    </div>
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      <span
+        class="sc-htpNat dmCBwz"
+      >
+        みま
+      </span>
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        見舞
+      </span>
+    </div>
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        い
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ReactFuri /> no reading or furi provided: just render word 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa qPQcf"
+    lang="ja"
+  >
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        漢字
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ReactFuri /> showFuri false: no furigana rendered 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa qPQcf"
+    lang="ja"
+  >
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        漢
+      </span>
+    </div>
+    <div
+      class="sc-bwzfXH gTAROy"
+    >
+      <span
+        class="sc-bxivhb imCjfa"
+      >
+        字
+      </span>
+    </div>
+  </div>
+</div>
+`;

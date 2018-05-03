@@ -1,4 +1,4 @@
-import { combineFuri, basicFuri, parseFuri, generatePairs } from '../utils';
+import { combineFuri, basicFuri, parseFuri, generatePairs } from '../src/utils';
 
 describe('combineFuri()', () => {
   describe('defaults', () => {
