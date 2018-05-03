@@ -48,7 +48,7 @@ module.exports = {
     },
     lint: {
       description: 'lint the entire project with eslint',
-      script: 'eslint .',
+      script: 'eslint ./src/*.js',
     },
     test: {
       default: {
