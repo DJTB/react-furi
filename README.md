@@ -42,6 +42,16 @@ const MyComponent = () => <ReactFuri word="考え方" furi="0:かんがえ;2:か
 
 ![Example Render](.github/example.png)
 
+## Props
+
+| Prop       | Type                 | Description                                                                                                 |
+| ---------- | -------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `word`     | _string_             | A Japanese word                                                                                             |
+| `reading`  | _string_             | The reading of the Japanese word                                                                            |
+| `furi`     | _string_ or _object_ | Furigana -> associated kanji placement data                                                                 |
+| `showFuri` | _boolean_            | Whether or not to show furigana                                                                             |
+| `render`   | _function_           | Custom render function, receives a single prop `pairs` which is an _array_ of grouped `[furi, text]` pairs. |
+
 ## Related
 
 * [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) : Furigana dictionary
