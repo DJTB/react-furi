@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Highlight from 'react-highlight.js';
 import { Toggle } from 'react-powerplug';
 import styled, { injectGlobal } from 'styled-components';
+import GithubCorner from 'react-github-corner';
 import ReactFuri from '../index';
 
 /* eslint-disable react/no-array-index-key */
@@ -34,6 +35,7 @@ const SectionTitle = styled.h2`
 
 const Demo = () => (
   <Main>
+    <GithubCorner href="https://github.com/DJTB/react-furi" />
     <header>
       <h1>ReactFuri Examples</h1>
     </header>
