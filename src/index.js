@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import cuid from 'cuid';
 
 import { combineFuri } from './utils';
 
@@ -41,7 +40,7 @@ function ReactFuri({ word, reading, furi, showFuri, render, ...props }) {
   ) : (
     <Wrapper lang="ja" {...props}>
       {pairs.map(([furiText, text]) => (
-        <Pair key={cuid()}>
+        <Pair>
           {showFuri && furiText && <Furi>{furiText}</Furi>}
           <Text>{text}</Text>
         </Pair>
