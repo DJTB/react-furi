@@ -20,9 +20,7 @@
     "semantic-release": "semantic-release"
   },
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "peerDependencies": {
     "react": "^15.3.0 || ^16.2.0",
     "react-dom": "^15.3.0 || ^16.2.0",
@@ -76,11 +74,7 @@
     }
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.fixture.js",
-      "!src/docs/*.*"
-    ]
+    "collectCoverageFrom": ["src/**/*.js", "!src/**/*.fixture.js", "!src/docs/*.*"]
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -89,10 +83,5 @@
       "git add"
     ]
   },
-  "keywords": [
-    "japanese",
-    "furigana",
-    "ruby",
-    "react"
-  ]
+  "keywords": ["japanese", "furigana", "okurigana", "ruby", "react", "styled-components"]
 }
