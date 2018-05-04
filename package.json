@@ -27,7 +27,6 @@
     "styled-components": "^3.2.0"
   },
   "dependencies": {
-    "cuid": "2.1.1",
     "just-zip-it": "2.0.0",
     "wanakana": "4.0.1"
   },
@@ -52,7 +51,6 @@
     "html-webpack-plugin": "3.2.0",
     "husky": "0.14.3",
     "jest": "22.4.3",
-    "jest-styled-components": "5.0.1",
     "lint-staged": "7.0.5",
     "nps": "5.9.0",
     "nps-utils": "1.5.0",
@@ -64,7 +62,6 @@
     "react-powerplug": "0.1.5",
     "react-testing-library": "2.4.0",
     "styled-components": "3.2.6",
-    "typography": "0.16.17",
     "webpack": "4.6.0",
     "webpack-cli": "2.1.2",
     "webpack-dev-server": "3.1.4"
