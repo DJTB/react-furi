@@ -25,7 +25,7 @@ module.exports = {
     build: {
       default: {
         description: 'Delete the dist directory and run babel to build the files',
-        script: series(rimraf('dist'), 'babel src -d dist --copy-files'),
+        script: series(rimraf('dist'), 'babel src -d dist --copy-files --ignore src/demo'),
       },
       watch: {
         description: 'Watch and rebuild dist',
@@ -34,16 +34,16 @@ module.exports = {
     },
     dev: {
       description: 'Watch build files and run dev server',
-      script: concurrent.nps('build.watch', 'docs'),
+      script: concurrent.nps('build.watch', 'demo'),
     },
-    docs: {
+    demo: {
       default: {
-        description: 'Run docs dev server',
+        description: 'Run demo dev server',
         script: 'webpack-dev-server --mode development',
       },
       prod: {
-        description: 'Build docs',
-        script: 'webpack --mode production',
+        description: 'Build demo',
+        script: series('webpack --mode production', 'gh-pages -d demo'),
       },
     },
     lint: {
