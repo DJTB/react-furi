@@ -69,9 +69,9 @@ const Demo = () => (
     </Section>
 
     <Section>
-      <SectionTitle>Specific furi location placement</SectionTitle>
-      {Code(`<ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />`)}
-      <ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />
+      <SectionTitle>Specific furi placement</SectionTitle>
+      {Code(`<ReactFuri word="お見舞い" furi="1:み;2:ま" />`)}
+      <ReactFuri word="お見舞い" furi="1:み;2:ま" />
       {Code(`<ReactFuri word="送り仮名" furi={{ 0:'おく', 2:'が', 3:'な' }} />`)}
       <ReactFuri word="送り仮名" furi={{ 0: 'おく', 2: 'が', 3: 'な' }} />
     </Section>
@@ -80,7 +80,7 @@ const Demo = () => (
       <SectionTitle>Showfuri prop</SectionTitle>
       {Code(
         '<Toggle render={({ on, toggle }) => (\n' +
-          '  <ReactFuri word="漢字" reading="かんじ" showFuri={on} onClick={toggle} />\n' +
+          '  <ReactFuri word="漢字" furi="0:かん;1:じ" showFuri={on} onClick={toggle} />\n' +
           ')}/>'
       )}
       <Toggle
