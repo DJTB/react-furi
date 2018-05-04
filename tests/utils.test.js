@@ -83,6 +83,11 @@ describe('combineFuri()', () => {
         ['', 'い'],
       ]);
     });
+
+    it('handles mixed word with numbers', () => {
+      expect(combineFuri('１日', 'ついたち')).toEqual([['ついたち', '１日']]);
+    });
+
     // not perfect since 'ー' is caught as a kanji, a few extra html elements, but it'll look fine visually
     it('reasonably handles whacky wanikani nonsense dual kana readings', () => {
       expect(combineFuri('缶ビール', 'かんビール')).toEqual([
@@ -104,7 +109,7 @@ describe('combineFuri()', () => {
 describe('basicFuri()', () => {
   describe('defaults', () => {
     it('no args', () => {
-      expect(basicFuri()).toEqual([]);
+      expect(basicFuri()).toEqual([['', '']]);
     });
 
     it('no reading', () => {

@@ -1,4 +1,4 @@
-import { stripOkurigana, tokenize, isKanji, isHiragana, isKatakana } from 'wanakana';
+import { stripOkurigana, tokenize, isKanji, isKana, isHiragana, isKatakana } from 'wanakana';
 import zip from 'just-zip-it';
 
 /**
@@ -23,7 +23,7 @@ export function combineFuri(word = '', reading = '', furi = '') {
   const furiLocs = parseFuri(furi);
   // 義訓/熟字訓 words with a single furi loc: 今日 "0:きょう"
   const isSpecialReading = furiLocs.length === 1 && [...word].every(isKanji);
-  const isKanaWord = ![...word].some(isKanji);
+  const isKanaWord = [...word].every(isKana);
   const isWanikaniMadness = [...reading].some(isHiragana) && [...reading].some(isKatakana);
 
   if (word === reading || isKanaWord) {
@@ -44,6 +44,11 @@ export function combineFuri(word = '', reading = '', furi = '') {
  * @return {Array} [['', 'お'], ['見舞', 'みま'], ['', 'い']]
  */
 export function basicFuri(word = '', reading = '') {
+  // early return + guard against words like １日 which are tokenized unfavourably
+  if ([...word].every((c) => !isKana(c))) {
+    return [[reading, word]];
+  }
+
   const [bikago, okurigana] = [
     reading.slice(0, word.length - stripOkurigana(word, { leading: true }).length),
     reading.slice(stripOkurigana(reading, { matchKanji: word }).length),

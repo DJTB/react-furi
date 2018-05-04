@@ -3,7 +3,7 @@ process.env.BABEL_ENV = 'test';
 module.exports = (wallaby) => {
   return {
     files: ['src/**/*.js', '!src/**/*.test.js'],
-    tests: ['src/**/*.test.js'],
+    tests: ['tests/**/*.test.js'],
 
     env: {
       type: 'node',
