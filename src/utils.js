@@ -1,4 +1,9 @@
-import { stripOkurigana, tokenize, isKanji, isKana, isHiragana, isKatakana } from 'wanakana';
+import stripOkurigana from 'wanakana/es/stripOkurigana';
+import tokenize from 'wanakana/es/tokenize';
+import isKanji from 'wanakana/es/isKanji';
+import isKana from 'wanakana/es/isKana';
+import isHiragana from 'wanakana/es/isHiragana';
+import isKatakana from 'wanakana/es/isKatakana';
 import zip from 'just-zip-it';
 
 /**

@@ -25,11 +25,11 @@ module.exports = {
     build: {
       default: {
         description: 'Delete the dist directory and run babel to build the files',
-        script: series(rimraf('dist'), 'babel src -d dist --copy-files --ignore src/demo'),
+        script: series(rimraf('dist'), 'rollup -c'),
       },
       watch: {
         description: 'Watch and rebuild dist',
-        script: 'babel src -w -d dist --copy-files',
+        script: 'rollup -c -w',
       },
     },
     dev: {
