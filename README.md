@@ -13,7 +13,7 @@
 
 ## Why?
 
-The [Ruby](https://developer.mozilla.org/ja/docs/Web/HTML/Element/ruby) element often has less than ideal rendering. This React component will automatically strip redundant kana, eliminating unnecessary noise often present in texts with furigana. Alternatively, you can use furigana data from [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) to render compound readings _precisely_ over their respective kanji characters.
+The [Ruby](https://developer.mozilla.org/en/docs/Web/HTML/Element/ruby) element often has less than ideal rendering. This React component will automatically strip redundant kana, eliminating unnecessary noise often present in texts with furigana. Alternatively, you can use furigana data from [JmdictFurigana](https://github.com/Doublevil/JmdictFurigana) to render compound readings _precisely_ over their respective kanji characters.
 
 ## Examples
 
@@ -46,7 +46,7 @@ const MyComponent = () => <ReactFuri word="考え方" reading="かんがえか�
 
 ![Example Reading Render](.github/example.png)
 
-Or you can custom render + re-use/restyle ReactFuri's styled-components
+Or you can custom render + re-use/restyle ReactFuri's styled-components: `Wrapper`, `Pair`, `Furi`, `Text`
 
 ```jsx
 const MyWrapper = ReactFuri.Wrapper.withComponent('h1');
