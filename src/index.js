@@ -7,6 +7,9 @@ import { combineFuri } from './utils';
 const Wrapper = styled.span`
   display: inline-flex;
   flex-flow: row wrap;
+  font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'TakaoPゴシック', TakaoPGothic,
+    '游ゴシック', '游ゴシック体', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ ゴシック',
+    'MS Gothic', HiraKakuProN-W3, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
 `;
 
 const Pair = styled.span`
