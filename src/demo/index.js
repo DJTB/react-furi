@@ -9,9 +9,9 @@ import ReactFuri from '../index';
 
 // eslint-disable-next-line
 injectGlobal`
-  font-family: 'Nunito Sans','Liberation Sans', TakaoPGothic, system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Cantarell,'Helvetica Neue',sans-serif;
+  font-family: 'Nunito Sans','Liberation Sans', TakaoPGothic, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Cantarell,'Helvetica Neue', sans-serif;
   *[lang="ja"] {
-    font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'TakaoPゴシック' , TakaoPGothic, '游ゴシック', '游ゴシック体', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
+    font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'TakaoPゴシック', TakaoPGothic, '游ゴシック', '游ゴシック体', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif;
   }
 `;
 
@@ -27,7 +27,7 @@ const Section = styled.section`
   margin-bottom: 2rem;
 `;
 
-const SectionTitle = styled.h3`
+const SectionTitle = styled.h2`
   padding-bottom: 2px;
   border-bottom: 1px solid lightGrey;
 `;
@@ -45,24 +45,21 @@ const Demo = () => (
         <rt>おとなしい</rt>
       </ruby>
     </Section>
-    <Section>
-      <SectionTitle>Specific furi location placement</SectionTitle>
-      {Code(`<ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />`)}
-      <ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />
-      {Code(`<ReactFuri word="送り仮名" furi={{ 0:'おく', 2:'が', 3:'な' }} />`)}
-      <ReactFuri word="送り仮名" furi={{ 0: 'おく', 2: 'が', 3: 'な' }} />
-    </Section>
+
     <Section>
       <SectionTitle>Intelligent furigana placement via reading</SectionTitle>
-      {Code(`<ReactFuri word="お陰" reading="おかげ" />`)}
-      <ReactFuri word="お陰" reading="おかげ" />
       {Code(`<ReactFuri word="大人しい" reading="おとなしい" />`)}
       <ReactFuri word="大人しい" reading="おとなしい" />
+      {Code(`<ReactFuri word="お陰" reading="おかげ" />`)}
+      <ReactFuri word="お陰" reading="おかげ" />
       {Code(`<ReactFuri word="使い方" reading="つかいかた" />`)}
       <ReactFuri word="使い方" reading="つかいかた" />
+      {Code(`<ReactFuri word="申し申し" reading="もしもし" />`)}
+      <ReactFuri word="申し申し" reading="もしもし" />
       {Code(`<ReactFuri word="お見舞い" reading="おみまい" />`)}
       <ReactFuri word="お見舞い" reading="おみまい" />
     </Section>
+
     <Section>
       <SectionTitle>Avoids rendering redundant furigana</SectionTitle>
       {Code(`<ReactFuri word="アイスクリーム" reading="アイスクリーム" />`)}
@@ -70,6 +67,15 @@ const Demo = () => (
       {Code(`<ReactFuri word="すいか" reading="スイカ" />`)}
       <ReactFuri word="すいか" reading="スイカ" />
     </Section>
+
+    <Section>
+      <SectionTitle>Specific furi location placement</SectionTitle>
+      {Code(`<ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />`)}
+      <ReactFuri word="送り仮名" furi="0:おく;2:が;3:な" />
+      {Code(`<ReactFuri word="送り仮名" furi={{ 0:'おく', 2:'が', 3:'な' }} />`)}
+      <ReactFuri word="送り仮名" furi={{ 0: 'おく', 2: 'が', 3: 'な' }} />
+    </Section>
+
     <Section>
       <SectionTitle>Showfuri prop</SectionTitle>
       {Code(
