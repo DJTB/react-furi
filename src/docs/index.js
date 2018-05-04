@@ -5,6 +5,8 @@ import { Toggle } from 'react-powerplug';
 import styled, { injectGlobal } from 'styled-components';
 import ReactFuri from '../index';
 
+/* eslint-disable react/no-array-index-key */
+
 // eslint-disable-next-line
 injectGlobal`
   font-family: 'Nunito Sans','Liberation Sans', TakaoPGothic, system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Cantarell,'Helvetica Neue',sans-serif;
@@ -33,7 +35,7 @@ const SectionTitle = styled.h3`
 const Demo = () => (
   <Main>
     <header>
-      <h1>react-furi Demo</h1>
+      <h1>ReactFuri Examples</h1>
     </header>
     <Section>
       <SectionTitle>{'Unstyled <ruby> element for comparison'}</SectionTitle>
@@ -101,6 +103,53 @@ const Demo = () => (
         reading="わりばし"
         render={({ pairs }) => <pre>{JSON.stringify(pairs, null, 2)}</pre>}
       />
+    </Section>
+    <Section>
+      <SectionTitle>Example Japanese sentence with ReactFuri</SectionTitle>
+      {Code(
+        `<p>\n` +
+          `  {[\n` +
+          `    ['５'],\n` +
+          `    ['月', 'がつ'],\n` +
+          `    ['１日', 'ついたち'],\n` +
+          `    ['の'],\n` +
+          `    ['メーデー'],\n` +
+          `    ['に、'],\n` +
+          `    ['パリ'],\n` +
+          `    ['では'],\n` +
+          `    ['毎年', 'まいとし'],\n` +
+          `    ['働く', 'はたらく'],\n` +
+          `    ['人たち', 'ひとたち'],\n` +
+          `    ['が'],\n` +
+          `    ['デモ'],\n` +
+          `    ['を'],\n` +
+          `    ['行なって', 'おこなって'],\n` +
+          `    ['います'],\n` +
+          `  ].map(([word, reading], i) => \n` +
+          `    <ReactFuri key={i} word={word} reading={reading} />\n` +
+          `  )}\n` +
+          `</p>\n`
+      )}
+      <p style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+        {[
+          ['５'],
+          ['月', 'がつ'],
+          ['１日', 'ついたち'],
+          ['の'],
+          ['メーデー'],
+          ['に、'],
+          ['パリ'],
+          ['では'],
+          ['毎年', 'まいとし'],
+          ['働く', 'はたらく'],
+          ['人たち', 'ひとたち'],
+          ['が'],
+          ['デモ'],
+          ['を'],
+          ['行なって', 'おこなって'],
+          ['います'],
+        ].map(([text, reading], i) => <ReactFuri key={i} word={text} reading={reading} />)}
+      </p>
     </Section>
   </Main>
 );
