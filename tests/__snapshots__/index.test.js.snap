@@ -3,7 +3,7 @@
 exports[`<ReactFuri /> custom render prop 1`] = `
 <div>
   <span
-    class="sc-bdVaJa ecEiwR"
+    class="sc-bdVaJa hSpgnF"
     lang="ja"
   >
     <span
@@ -41,7 +41,7 @@ exports[`<ReactFuri /> custom render prop 1`] = `
 exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 1`] = `
 <div>
   <span
-    class="sc-bdVaJa ecEiwR"
+    class="sc-bdVaJa hSpgnF"
     lang="ja"
   >
     <span
@@ -79,7 +79,7 @@ exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 
 exports[`<ReactFuri /> no furi provided: render relevant readings over kanji blocks 1`] = `
 <div>
   <span
-    class="sc-bdVaJa ecEiwR"
+    class="sc-bdVaJa hSpgnF"
     lang="ja"
   >
     <span
@@ -127,7 +127,7 @@ exports[`<ReactFuri /> no furi provided: render relevant readings over kanji blo
 exports[`<ReactFuri /> no reading or furi provided: just render word 1`] = `
 <div>
   <span
-    class="sc-bdVaJa ecEiwR"
+    class="sc-bdVaJa hSpgnF"
     lang="ja"
   >
     <span
@@ -149,7 +149,7 @@ exports[`<ReactFuri /> no reading or furi provided: just render word 1`] = `
 exports[`<ReactFuri /> showFuri false: no furigana rendered 1`] = `
 <div>
   <span
-    class="sc-bdVaJa ecEiwR"
+    class="sc-bdVaJa hSpgnF"
     lang="ja"
   >
     <span
