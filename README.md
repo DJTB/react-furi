@@ -21,8 +21,6 @@ The [Ruby](https://developer.mozilla.org/en/docs/Web/HTML/Element/ruby) element 
 
 ## Installation
 
-Note: react, react-dom, & styled-components are expected to already be present in your app
-
 ```sh
 npm install --save react-furi
 ```
