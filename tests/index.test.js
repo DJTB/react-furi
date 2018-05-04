@@ -1,10 +1,8 @@
 import React from 'react';
 import { render } from 'react-testing-library';
-import cuid from 'cuid';
-import 'jest-styled-components';
-import 'dom-testing-library/extend-expect';
 
 import ReactFuri from '../src/index';
+const { Wrapper, Pair, Furi, Text } = ReactFuri;
 
 describe('<ReactFuri />', () => {
   it('no reading or furi provided: just render word', () => {
@@ -33,14 +31,15 @@ describe('<ReactFuri />', () => {
         word="漢字"
         furi="0:かん;1:じ"
         render={({ pairs }) => (
-          <div>
-            {pairs.map(([furi, text]) => (
-              <dl key={cuid()}>
-                <dd>{furi}</dd>
-                <dt>{text}</dt>
-              </dl>
+          <Wrapper lang="ja">
+            {pairs.map(([furiText, text], index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Pair key={index}>
+                {furiText && <Furi>{furiText}</Furi>}
+                <Text>{text}</Text>
+              </Pair>
             ))}
-          </div>
+          </Wrapper>
         )}
       />
     );

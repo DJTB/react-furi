@@ -2,38 +2,53 @@
 
 exports[`<ReactFuri /> custom render prop 1`] = `
 <div>
-  <div>
-    <dl>
-      <dd>
+  <span
+    class="sc-bdVaJa ecEiwR"
+    lang="ja"
+  >
+    <span
+      class="sc-bwzfXH faybqm"
+    >
+      <span
+        class="sc-htpNat cKlPSt"
+      >
         かん
-      </dd>
-      <dt>
+      </span>
+      <span
+        class="sc-bxivhb imCjfa"
+      >
         漢
-      </dt>
-    </dl>
-    <dl>
-      <dd>
+      </span>
+    </span>
+    <span
+      class="sc-bwzfXH faybqm"
+    >
+      <span
+        class="sc-htpNat cKlPSt"
+      >
         じ
-      </dd>
-      <dt>
+      </span>
+      <span
+        class="sc-bxivhb imCjfa"
+      >
         字
-      </dt>
-    </dl>
-  </div>
+      </span>
+    </span>
+  </span>
 </div>
 `;
 
 exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 1`] = `
 <div>
-  <div
-    class="sc-bdVaJa qPQcf"
+  <span
+    class="sc-bdVaJa ecEiwR"
     lang="ja"
   >
-    <div
-      class="sc-bwzfXH gTAROy"
+    <span
+      class="sc-bwzfXH faybqm"
     >
       <span
-        class="sc-htpNat dmCBwz"
+        class="sc-htpNat cKlPSt"
       >
         かん
       </span>
@@ -42,12 +57,12 @@ exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 
       >
         漢
       </span>
-    </div>
-    <div
-      class="sc-bwzfXH gTAROy"
+    </span>
+    <span
+      class="sc-bwzfXH faybqm"
     >
       <span
-        class="sc-htpNat dmCBwz"
+        class="sc-htpNat cKlPSt"
       >
         じ
       </span>
@@ -56,32 +71,34 @@ exports[`<ReactFuri /> furi provided: render furigana over related kanji blocks 
       >
         字
       </span>
-    </div>
-  </div>
+    </span>
+  </span>
 </div>
 `;
 
 exports[`<ReactFuri /> no furi provided: render relevant readings over kanji blocks 1`] = `
 <div>
-  <div
-    class="sc-bdVaJa qPQcf"
+  <span
+    class="sc-bdVaJa ecEiwR"
     lang="ja"
   >
-    <div
-      class="sc-bwzfXH gTAROy"
+    <span
+      class="sc-bwzfXH faybqm"
     >
-      
+      <span
+        class="sc-htpNat cKlPSt"
+      />
       <span
         class="sc-bxivhb imCjfa"
       >
         お
       </span>
-    </div>
-    <div
-      class="sc-bwzfXH gTAROy"
+    </span>
+    <span
+      class="sc-bwzfXH faybqm"
     >
       <span
-        class="sc-htpNat dmCBwz"
+        class="sc-htpNat cKlPSt"
       >
         みま
       </span>
@@ -90,65 +107,69 @@ exports[`<ReactFuri /> no furi provided: render relevant readings over kanji blo
       >
         見舞
       </span>
-    </div>
-    <div
-      class="sc-bwzfXH gTAROy"
+    </span>
+    <span
+      class="sc-bwzfXH faybqm"
     >
-      
+      <span
+        class="sc-htpNat cKlPSt"
+      />
       <span
         class="sc-bxivhb imCjfa"
       >
         い
       </span>
-    </div>
-  </div>
+    </span>
+  </span>
 </div>
 `;
 
 exports[`<ReactFuri /> no reading or furi provided: just render word 1`] = `
 <div>
-  <div
-    class="sc-bdVaJa qPQcf"
+  <span
+    class="sc-bdVaJa ecEiwR"
     lang="ja"
   >
-    <div
-      class="sc-bwzfXH gTAROy"
+    <span
+      class="sc-bwzfXH faybqm"
     >
-      
+      <span
+        class="sc-htpNat cKlPSt"
+      />
       <span
         class="sc-bxivhb imCjfa"
       >
         漢字
       </span>
-    </div>
-  </div>
+    </span>
+  </span>
 </div>
 `;
 
 exports[`<ReactFuri /> showFuri false: no furigana rendered 1`] = `
 <div>
-  <div
-    class="sc-bdVaJa qPQcf"
+  <span
+    class="sc-bdVaJa ecEiwR"
     lang="ja"
   >
-    <div
-      class="sc-bwzfXH gTAROy"
+    <span
+      class="sc-bwzfXH faybqm"
     >
       <span
         class="sc-bxivhb imCjfa"
       >
         漢
       </span>
-    </div>
-    <div
-      class="sc-bwzfXH gTAROy"
+    </span>
+    <span
+      class="sc-bwzfXH faybqm"
     >
       <span
         class="sc-bxivhb imCjfa"
       >
         字
       </span>
-    </div>
-  </div>
+    </span>
+  </span>
 </div>
 `;

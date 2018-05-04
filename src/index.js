@@ -1,17 +1,17 @@
-// TODO: semantic-release-cli setup
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { combineFuri } from './utils';
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
   display: inline-flex;
-  font-size: 24px;
+  flex-flow: row wrap;
 `;
 
-const Pair = styled.div`
-  display: flex;
+const Pair = styled.span`
+  display: inline-flex;
+  font-size: 24px;
   line-height: 1;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -23,7 +23,9 @@ const Furi = styled.span`
   display: block;
   font-size: 0.5em;
   letter-spacing: -0.02em;
-  padding-bottom: 0.2em;
+  margin: 0 0.1em;
+  padding-top: 0.2em;
+  padding-bottom: 0.1em;
   user-select: none; /* don't interfere with main text selection */
   opacity: 0.9;
 `;
@@ -39,9 +41,11 @@ function ReactFuri({ word, reading, furi, showFuri, render, ...props }) {
     render({ pairs })
   ) : (
     <Wrapper lang="ja" {...props}>
-      {pairs.map(([furiText, text]) => (
-        <Pair>
-          {showFuri && furiText && <Furi>{furiText}</Furi>}
+      {pairs.map(([furiText, text], index) => (
+        // "list" is static, index is fine
+        // eslint-disable-next-line react/no-array-index-key
+        <Pair key={index}>
+          {showFuri && <Furi>{furiText}</Furi>}
           <Text>{text}</Text>
         </Pair>
       ))}
