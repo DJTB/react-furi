@@ -16,7 +16,7 @@
   },
   "rules": {
     "function-paren-newline": 0,
-    "quotes": [2, "single"],
+    "quotes": 0,
     "arrow-parens": [2, "always"],
     "camelcase": 1,
     "comma-dangle": [2, "always-multiline"],

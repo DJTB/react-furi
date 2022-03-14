@@ -39,7 +39,12 @@ describe('combineFuri()', () => {
   });
 
   describe('with furi data', () => {
-    const expected = [['', 'お'], ['せ', '世'], ['じ', '辞']];
+    const expected = [
+      ['', 'お'],
+      ['せ', '世'],
+      ['じ', '辞'],
+    ];
+
     it('accepts furi location string', () => {
       expect(combineFuri('お世辞', 'おせじ', '1:せ;2:じ')).toEqual(expected);
       expect(combineFuri('お世辞', '', '1:せ;2:じ')).toEqual(expected);
@@ -69,11 +74,17 @@ describe('combineFuri()', () => {
     });
 
     it('trailing okurigana fallback', () => {
-      expect(combineFuri('大人しい', 'おとなしい')).toEqual([['おとな', '大人'], ['', 'しい']]);
+      expect(combineFuri('大人しい', 'おとなしい')).toEqual([
+        ['おとな', '大人'],
+        ['', 'しい'],
+      ]);
     });
 
     it('leading bikago fallback', () => {
-      expect(combineFuri('お札', 'おふだ')).toEqual([['', 'お'], ['ふだ', '札']]);
+      expect(combineFuri('お札', 'おふだ')).toEqual([
+        ['', 'お'],
+        ['ふだ', '札'],
+      ]);
     });
 
     it('leading bikago and trailing okurigana fallback', () => {
@@ -118,16 +129,30 @@ describe('basicFuri()', () => {
   });
 
   it('slices kana where present', () => {
-    expect(basicFuri('お札', 'おふだ')).toEqual([['', 'お'], ['ふだ', '札']]);
-    expect(basicFuri('使い方', 'つかいかた')).toEqual([['つか', '使'], ['', 'い'], ['かた', '方']]);
-    expect(basicFuri('大人しい', 'おとなしい')).toEqual([['おとな', '大人'], ['', 'しい']]);
+    expect(basicFuri('お札', 'おふだ')).toEqual([
+      ['', 'お'],
+      ['ふだ', '札'],
+    ]);
+    expect(basicFuri('使い方', 'つかいかた')).toEqual([
+      ['つか', '使'],
+      ['', 'い'],
+      ['かた', '方'],
+    ]);
+    expect(basicFuri('大人しい', 'おとなしい')).toEqual([
+      ['おとな', '大人'],
+      ['', 'しい'],
+    ]);
     expect(basicFuri('申し申し', 'もしもし')).toEqual([
       ['も', '申'],
       ['', 'し'],
       ['も', '申'],
       ['', 'し'],
     ]);
-    expect(basicFuri('お見舞い', 'おみまい')).toEqual([['', 'お'], ['みま', '見舞'], ['', 'い']]);
+    expect(basicFuri('お見舞い', 'おみまい')).toEqual([
+      ['', 'お'],
+      ['みま', '見舞'],
+      ['', 'い'],
+    ]);
     // not a real word :P
     expect(basicFuri('お見い舞い', 'おみいまい')).toEqual([
       ['', 'お'],
@@ -145,7 +170,10 @@ describe('parseFuri()', () => {
   });
 
   it('works', () => {
-    expect(parseFuri('1:せ;2:じ')).toEqual([[[1, 2], 'せ'], [[2, 3], 'じ']]);
+    expect(parseFuri('1:せ;2:じ')).toEqual([
+      [[1, 2], 'せ'],
+      [[2, 3], 'じ'],
+    ]);
   });
 
   it('can span multiple kanji', () => {
@@ -153,7 +181,10 @@ describe('parseFuri()', () => {
   });
 
   it('can partially span multiple kanji', () => {
-    expect(parseFuri('0-1:うーろん;2:ちゃ')).toEqual([[[0, 2], 'うーろん'], [[2, 3], 'ちゃ']]);
+    expect(parseFuri('0-1:うーろん;2:ちゃ')).toEqual([
+      [[0, 2], 'うーろん'],
+      [[2, 3], 'ちゃ'],
+    ]);
   });
 });
 
@@ -163,7 +194,12 @@ describe('generatePairs()', () => {
   });
 
   it('works', () => {
-    expect(generatePairs('お世辞', [[[1, 2], 'せ'], [[2, 3], 'じ']])).toEqual([
+    expect(
+      generatePairs('お世辞', [
+        [[1, 2], 'せ'],
+        [[2, 3], 'じ'],
+      ])
+    ).toEqual([
       ['', 'お'],
       ['せ', '世'],
       ['じ', '辞'],
@@ -171,7 +207,12 @@ describe('generatePairs()', () => {
   });
 
   it('handles words with separated kanji and trailing okurigana', () => {
-    expect(generatePairs('貫き通す', [[[0, 1], 'つらぬ'], [[2, 3], 'とお']])).toEqual([
+    expect(
+      generatePairs('貫き通す', [
+        [[0, 1], 'つらぬ'],
+        [[2, 3], 'とお'],
+      ])
+    ).toEqual([
       ['つらぬ', '貫'],
       ['', 'き'],
       ['とお', '通'],

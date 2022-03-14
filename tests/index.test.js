@@ -5,7 +5,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { ReactFuri, Wrapper, Pair, Furi, Text } from '../src/index';
+import { ReactFuri, Wrapper, Pair, Furi, Text } from '../src/components';
 
 describe('<ReactFuri />', () => {
   it('no reading or furi provided: just render word', () => {
@@ -14,9 +14,7 @@ describe('<ReactFuri />', () => {
   });
 
   it('no furi provided: render relevant readings over kanji blocks', () => {
-    const { container } = render(
-      <ReactFuri word="お見舞い" reading="おみまい" />
-    );
+    const { container } = render(<ReactFuri word="お見舞い" reading="おみまい" />);
     expect(container).toMatchSnapshot();
   });
 
@@ -26,9 +24,7 @@ describe('<ReactFuri />', () => {
   });
 
   it('showFuri false: no furigana rendered', () => {
-    const { container } = render(
-      <ReactFuri word="漢字" furi="0:かん;1:じ" showFuri={false} />
-    );
+    const { container } = render(<ReactFuri word="漢字" furi="0:かん;1:じ" showFuri={false} />);
     expect(container).toMatchSnapshot();
   });
 

@@ -5,8 +5,7 @@ import { useFuriPairs } from './hooks';
 const wrapperStyle = {
   display: 'inline-flex',
   flexFlow: 'row wrap',
-  fontFamily:
-    '"ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "TakaoPゴシック", TakaoPGothic, "游ゴシック", "游ゴシック体", YuGothic, "Yu Gothic", "メイリオ", Meiryo, "ＭＳ ゴシック", "MS Gothic", HiraKakuProN-W3, "MotoyaLCedar", "Droid Sans Japanese", sans-serif',
+  fontFamily: `'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'TakaoPゴシック', TakaoPGothic, '游ゴシック', '游ゴシック体', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ ゴシック', 'MS Gothic', HiraKakuProN-W3, 'MotoyaLCedar', 'Droid Sans Japanese', sans-serif`,
 };
 
 const pairStyle = {
