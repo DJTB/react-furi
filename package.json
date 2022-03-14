@@ -15,7 +15,6 @@
   "scripts": {
     "start": "nps --no-scripts",
     "precommit": "lint-staged",
-    "prepush": "nps demo.prod",
     "test": "nps test",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
