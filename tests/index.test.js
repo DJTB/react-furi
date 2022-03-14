@@ -1,8 +1,11 @@
-import React from 'react';
-import { render } from 'react-testing-library';
+/**
+ * @jest-environment jsdom
+ */
 
-import ReactFuri from '../src/index';
-const { Wrapper, Pair, Furi, Text } = ReactFuri;
+import React from 'react';
+import { render } from '@testing-library/react';
+
+import { ReactFuri, Wrapper, Pair, Furi, Text } from '../src/index';
 
 describe('<ReactFuri />', () => {
   it('no reading or furi provided: just render word', () => {
@@ -11,7 +14,9 @@ describe('<ReactFuri />', () => {
   });
 
   it('no furi provided: render relevant readings over kanji blocks', () => {
-    const { container } = render(<ReactFuri word="お見舞い" reading="おみまい" />);
+    const { container } = render(
+      <ReactFuri word="お見舞い" reading="おみまい" />
+    );
     expect(container).toMatchSnapshot();
   });
 
@@ -21,7 +26,9 @@ describe('<ReactFuri />', () => {
   });
 
   it('showFuri false: no furigana rendered', () => {
-    const { container } = render(<ReactFuri word="漢字" furi="0:かん;1:じ" showFuri={false} />);
+    const { container } = render(
+      <ReactFuri word="漢字" furi="0:かん;1:じ" showFuri={false} />
+    );
     expect(container).toMatchSnapshot();
   });
 
@@ -32,13 +39,15 @@ describe('<ReactFuri />', () => {
         furi="0:かん;1:じ"
         render={({ pairs }) => (
           <Wrapper lang="ja">
-            {pairs.map(([furiText, text], index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Pair key={index}>
-                {furiText && <Furi>{furiText}</Furi>}
-                <Text>{text}</Text>
-              </Pair>
-            ))}
+            {pairs.map(([furiText, text], index) => {
+              const key = text + index;
+              return (
+                <Pair key={key}>
+                  {furiText && <Furi>{furiText}</Furi>}
+                  <Text>{text}</Text>
+                </Pair>
+              );
+            })}
           </Wrapper>
         )}
       />

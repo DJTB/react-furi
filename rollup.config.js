@@ -23,7 +23,7 @@ export default {
     external(),
     babel({
       exclude: 'node_modules/**',
-      plugins: ['transform-react-remove-prop-types', 'external-helpers'],
+      plugins: ['transform-react-remove-prop-types'],
     }),
     resolve(),
     commonjs(),

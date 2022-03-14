@@ -54,9 +54,12 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# Dotenv environment variables file
 .env
 
-# compiled
+# Compiled
 dist
 demo
+
+# Trash
+.DS_Store

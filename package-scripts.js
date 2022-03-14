@@ -42,7 +42,7 @@ module.exports = {
         script: 'webpack-dev-server --mode development',
       },
       prod: {
-        description: 'Build demo',
+        description: 'Build demo and publish to github pages',
         script: series('webpack --mode production', 'gh-pages -d demo'),
       },
     },
