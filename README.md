@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-furi.svg?style=flat-square)](https://www.npmjs.com/package/react-furi)
 [![npm](https://img.shields.io/npm/dt/react-furi.svg?style=flat-square)](https://npm-stat.com/charts.html?package=react-furi&from=2016-04-01)
-[![Travis branch](https://img.shields.io/travis/DJTB/react-furi/master.svg?style=flat-square)](https://travis-ci.org/DJTB/react-furi)
+[![Travis branch](https://img.shields.io/travis/DJTB/react-furi/master.svg?style=flat-square)](https://travis-ci.com/DJTB/react-furi)
 [![Codecov branch](https://img.shields.io/codecov/c/github/DJTB/react-furi/master.svg?style=flat-square)](https://codecov.io/github/DJTB/react-furi)
 <br />
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
