@@ -19,13 +19,5 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [
-    external(),
-    babel({
-      exclude: 'node_modules/**',
-      plugins: ['transform-react-remove-prop-types'],
-    }),
-    resolve(),
-    commonjs(),
-  ],
+  plugins: [external(), babel({ exclude: 'node_modules/**' }), resolve(), commonjs()],
 };
