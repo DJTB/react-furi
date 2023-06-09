@@ -114,6 +114,13 @@ describe('combineFuri()', () => {
         ['がた', '型'],
       ]);
     });
+
+    it('odoriji', () => {
+      expect(combineFuri('人々が', 'ひとびとが')).toEqual([
+        ['ひとびと', '人々'],
+        ['', 'が'],
+      ]);
+    });
   });
 });
 

@@ -59,11 +59,11 @@ export function basicFuri(word = '', reading = '') {
     reading.slice(stripOkurigana(reading, { matchKanji: word }).length),
   ];
 
-  const innerWordTokens = tokenize(removeExtraneousKana(word, bikago, okurigana));
+  const innerWordTokens = tokenizeWithOdoriji(removeExtraneousKana(word, bikago, okurigana));
   let innerReadingChars = removeExtraneousKana(reading, bikago, okurigana);
 
   const kanjiOddKanaEvenRegex = RegExp(
-    innerWordTokens.map((char) => (isKanji(char) ? '(.*)' : `(${char})`)).join('')
+    innerWordTokens.map((char) => ((isKanji(char) || char.includes('々')) ? '(.*)' : `(${char})`)).join('')
   );
 
   [, ...innerReadingChars] = innerReadingChars.match(kanjiOddKanaEvenRegex) || [];
@@ -80,6 +80,24 @@ export function basicFuri(word = '', reading = '') {
 
   return ret;
 }
+
+function tokenizeWithOdoriji(input) {
+  const tokenizedArray = tokenize(input);
+  // merge 々 with previous element
+  for (let i = 0; i < tokenizedArray.length; i += 1) {
+    if (tokenizedArray[i] === '々') {
+      if (i !== 0) {
+        tokenizedArray[i - 1] = tokenizedArray[i - 1] + tokenizedArray[i];
+        tokenizedArray[i] = '';
+      }
+    }
+  }
+  // remove empty element
+  const removedEmpty = tokenizedArray.filter((element) => element !== '');
+
+  return removedEmpty;
+}
+
 
 function removeExtraneousKana(str = '', leading = '', trailing = '') {
   return str.replace(RegExp(`^${leading}`), '').replace(RegExp(`${trailing}$`), '');
