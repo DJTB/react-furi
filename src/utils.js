@@ -63,7 +63,9 @@ export function basicFuri(word = '', reading = '') {
   let innerReadingChars = removeExtraneousKana(reading, bikago, okurigana);
 
   const kanjiOddKanaEvenRegex = RegExp(
-    innerWordTokens.map((char) => ((isKanji(char) || char.includes('々')) ? '(.*)' : `(${char})`)).join('')
+    innerWordTokens
+      .map((char) => (isKanji(char) || char.includes('々') ? '(.*)' : `(${char})`))
+      .join('')
   );
 
   [, ...innerReadingChars] = innerReadingChars.match(kanjiOddKanaEvenRegex) || [];
@@ -97,7 +99,6 @@ function tokenizeWithOdoriji(input) {
 
   return removedEmpty;
 }
-
 
 function removeExtraneousKana(str = '', leading = '', trailing = '') {
   return str.replace(RegExp(`^${leading}`), '').replace(RegExp(`${trailing}$`), '');
