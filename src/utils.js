@@ -1,9 +1,4 @@
-import stripOkurigana from 'wanakana/es/stripOkurigana';
-import tokenize from 'wanakana/es/tokenize';
-import isKanji from 'wanakana/es/isKanji';
-import isKana from 'wanakana/es/isKana';
-import isHiragana from 'wanakana/es/isHiragana';
-import isKatakana from 'wanakana/es/isKatakana';
+import { stripOkurigana, tokenize, isKanji, isKana, isHiragana, isKatakana } from 'wanakana';
 import zip from 'just-zip-it';
 
 /**
@@ -59,13 +54,11 @@ export function basicFuri(word = '', reading = '') {
     reading.slice(stripOkurigana(reading, { matchKanji: word }).length),
   ];
 
-  const innerWordTokens = tokenizeWithOdoriji(removeExtraneousKana(word, bikago, okurigana));
+  const innerWordTokens = tokenize(removeExtraneousKana(word, bikago, okurigana));
   let innerReadingChars = removeExtraneousKana(reading, bikago, okurigana);
 
   const kanjiOddKanaEvenRegex = RegExp(
-    innerWordTokens
-      .map((char) => (isKanji(char) || char.includes('々') ? '(.*)' : `(${char})`))
-      .join('')
+    innerWordTokens.map((char) => (isKanji(char) ? '(.*)' : `(${char})`)).join(''),
   );
 
   [, ...innerReadingChars] = innerReadingChars.match(kanjiOddKanaEvenRegex) || [];
@@ -81,23 +74,6 @@ export function basicFuri(word = '', reading = '') {
   }
 
   return ret;
-}
-
-function tokenizeWithOdoriji(input) {
-  const tokenizedArray = tokenize(input);
-  // merge 々 with previous element
-  for (let i = 0; i < tokenizedArray.length; i += 1) {
-    if (tokenizedArray[i] === '々') {
-      if (i !== 0) {
-        tokenizedArray[i - 1] = tokenizedArray[i - 1] + tokenizedArray[i];
-        tokenizedArray[i] = '';
-      }
-    }
-  }
-  // remove empty element
-  const removedEmpty = tokenizedArray.filter((element) => element !== '');
-
-  return removedEmpty;
 }
 
 function removeExtraneousKana(str = '', leading = '', trailing = '') {
