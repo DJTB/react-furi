@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "just-zip-it": "^3.0.2",
-    "wanakana": "^4.0.2"
+    "wanakana": "^5.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
