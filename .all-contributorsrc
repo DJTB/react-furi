@@ -10,16 +10,33 @@
     {
       "login": "DJTB",
       "name": "Duncan Bay",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/22868432?v=3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5353151?v=4",
       "profile": "https://github.com/DJTB",
       "contributions": [
         "code",
         "doc",
         "infra",
         "design",
-        "example"
+        "bug",
+        "ideas",
+        "maintenance",
+        "review",
+        "security",
+        "test"
+      ]
+    },
+    {
+      "login": "latteouka",
+      "name": "Chun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11053904?v=4",
+      "profile": "https://github.com/latteouka",
+      "contributions": [
+        "bug",
+        "code",
+        "test"
       ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "commitConvention": "angular"
 }

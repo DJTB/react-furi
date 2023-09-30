@@ -75,10 +75,17 @@ function MyComponent({ word, reading, furi, showFuri }) {
 Thanks goes to these people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/DJTB"><img src="https://avatars.githubusercontent.com/u/5353151?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Duncan Bay</b></sub></a><br /><a href="https://github.com/DJTB/hatsuon/commits?author=DJTB" title="Code">💻</a> <a href="https://github.com/DJTB/hatsuon/commits?author=DJTB" title="Documentation">📖</a> <a href="#infra-DJTB" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#design-DJTB" title="Design">🎨</a> <a href="https://github.com/DJTB/hatsuon/issues?q=author%3ADJTB" title="Bug reports">🐛</a> <a href="#ideas-DJTB" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-DJTB" title="Maintenance">🚧</a> <a href="https://github.com/DJTB/hatsuon/pulls?q=is%3Apr+reviewed-by%3ADJTB" title="Reviewed Pull Requests">👀</a> <a href="#security-DJTB" title="Security">🛡️</a> <a href="https://github.com/DJTB/hatsuon/commits?author=DJTB" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/latteouka"><img src="https://avatars.githubusercontent.com/u/11053904?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chun</b></sub></a><br /><a href="https://github.com/DJTB/hatsuon/issues?q=author%3Alatteouka" title="Bug reports">🐛</a> <a href="https://github.com/DJTB/hatsuon/commits?author=latteouka" title="Code">💻</a> <a href="https://github.com/DJTB/hatsuon/commits?author=latteouka" title="Tests">⚠️</a></td>
+  </tr>
+</table>
 
-<!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/5353151?s=100" width="100px;"/><br /><sub><b>Duncan Bay</b></sub>](https://github.com/DJTB)<br />[💻](https://github.com/DJTB/react-furi/commits?author=DJTB "Code") [📖](https://github.com/DJTB/react-furi/commits?author=DJTB "Documentation") [🚇](#infra-DJTB "Infrastructure (Hosting, Build-Tools, etc)") [🎨](#design-DJTB "Design") |
-| :---: |
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
