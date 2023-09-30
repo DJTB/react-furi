@@ -6,7 +6,7 @@
     "jest": true,
     "es6": true
   },
-  "plugins": ["import", "react"],
+  "plugins": ["import", "react", "importAssertions"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",

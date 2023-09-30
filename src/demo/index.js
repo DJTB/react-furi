@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Toggle } from 'react-powerplug';
@@ -256,4 +256,4 @@ function MyComponent({ word, reading, furi, showFuri }) {
   );
 }
 
-render(<Demo />, document.getElementById('app'));
+createRoot(document.getElementById('app')).render(<Demo />);

@@ -1,9 +1,4 @@
-import stripOkurigana from 'wanakana/es/stripOkurigana';
-import tokenize from 'wanakana/es/tokenize';
-import isKanji from 'wanakana/es/isKanji';
-import isKana from 'wanakana/es/isKana';
-import isHiragana from 'wanakana/es/isHiragana';
-import isKatakana from 'wanakana/es/isKatakana';
+import { stripOkurigana, tokenize, isKanji, isKana, isHiragana, isKatakana } from 'wanakana';
 import zip from 'just-zip-it';
 
 /**
@@ -65,7 +60,7 @@ export function basicFuri(word = '', reading = '') {
   const kanjiOddKanaEvenRegex = RegExp(
     innerWordTokens
       .map((char) => (isKanji(char) || char.includes('々') ? '(.*)' : `(${char})`))
-      .join('')
+      .join(''),
   );
 
   [, ...innerReadingChars] = innerReadingChars.match(kanjiOddKanaEvenRegex) || [];

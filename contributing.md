@@ -9,15 +9,16 @@ Thanks for being willing to contribute!
 
 1.  Fork and clone the repo
 2.  `npm install` to install dependencies
-3.  `npm start validate` to validate you‘ve got it working
-4.  Create a branch for your PR
+3.  `npm i -g nps` to install npm scripts helper
+4.  `npm start validate` to validate you‘ve got it working
+5.  Create a branch for your PR
 
 This project uses [nps](https://npmjs.com/package/nps) and you can run `npm start` to see what scripts are available.
 
 > Tip: Keep your `master` branch pointing at the original repository and make pull requests from branches on your fork. To do this, run:
 >
 > ```
-> git remote add upstream https://github.com/DJTB/hatsuon
+> git remote add upstream https://github.com/DJTB/react-furi
 > git fetch upstream
 > git branch --set-upstream-to=upstream/master master
 > ```
@@ -44,6 +45,6 @@ commit history. So we follow [a convention](https://github.com/conventional-chan
 
 ## Help needed
 
-Please checkout the [`roadmap.md`](./other/roadmap.md) and the open issues.
+Please checkout any open issues.
 
 Also, please watch the repo and respond to questions/bug reports/feature requests, Thanks!
